@@ -1,0 +1,49 @@
+{
+"manifest_version": 3,
+"name": "Second life",
+"version": "1.0",
+
+"description": "Favoriser les achats de seconde main",
+
+"background": {
+	"service_worker":"background.js"
+},
+
+"content_scripts": [ {
+	"matches": ["https://www.amazon.fr/*"],
+	"js": ["content.js"]
+  } ],
+
+  "commands": {
+    "run-foo": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "Run \"foo\" on the current page."
+    },
+    "_execute_action": {
+      "suggested_key": {
+        "windows": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y",
+        "chromeos": "Ctrl+Shift+U",
+        "linux": "Ctrl+Shift+J"
+      }
+    }
+  },
+
+"action":{
+	"default_popup": "main.html",
+	"default_icon": {
+		"128": "logo.png"
+		}
+},
+"icons": {
+"128": "logo.png"
+},
+
+"permissions": [
+"unlimitedStorage",
+"notifications"	
+]
+}
