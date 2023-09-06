@@ -1,5 +1,27 @@
+<!DOCTYPE html>
 <html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="popup.css" type="text/css">
+	</head>
+
 	<body>
-		<h1>Sasageyo !</h1>
+		<h1>AMAZON'T !</h1>
+
+		<button id="button">Activer le popup</button>
+
+		<div id="popup-overlay">
+			<div class="popup-content">
+				<h2>As-tu pensé à aller sur le Bon Coin ?</h2>
+				<p>Cliquez sur le lien ci-dessous !</p>
+				<a href="https://www.leboncoin.fr/" class="popup-link">Lien vers LeBonCoin</a>
+				<a href="javascript:void(0)" onclick="togglePopup()" class="popup-exit">Fermez la page</a>
+			</div>
+		</div>
+
+	<script src="popup.js">	</script>
+
 	</body>
+
 </html>
