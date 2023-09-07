@@ -1,23 +1,28 @@
-const button = document.getElementById("nav-search-submit-button");
 
-button.addEventListener("click", function(){ 
-    //let input = document.getElementById("twotabsearchtextbox").value;
-    //let link = `https://www.leboncoin.fr/recherche?text=${input}`;
+
+    let b = document.body;
+    let newP = document.createElement('div');
+    newP.innerHTML = `<div id="popup-overlay">
+    <div class="popup-content">
+      <h2>As-tu pensé à aller sur le Bon Coin ?</h2>
+      <p>Cliquez sur le lien ci-dessous !</p>
+      <a href=https://www.leboncoin.fr/ class="popup-link">Lien vers LeBonCoin</a>
+      <a href="javascript:void(0)"  class="popup-exit">Fermer</a>
+    </div>
+  </div>`;
+    
+    //Ajoute le paragraphe créé comme premier enfant de l'élément body
+    b.prepend(newP);
+
     togglePopup();
-   });
 
-function togglePopup() {
-    console.log("ok google");
-   
-// Crée l'élément p pour le paragraphe
-let paragraph = document.createElement("p");
-paragraph.textContent = "Cliquez sur le lien ci-dessous !";
 
-// Ajoute la popup dans le corps (body) du document
-document.body.appendChild(paragraph);
-console.log("hello")
-    // let popup = document.querySelector("#popup-overlay");
-    // popup.classList.toggle("open");
-}
+
+   function togglePopup() {
+    let popup = document.querySelector("#popup-overlay");
+    popup.classList.toggle("open");
+    
+  }
+
 
 //document.querySelector(".popup-exit").addEventListener("click", togglePopup);
