@@ -4,12 +4,14 @@ let input = newSearch.split('&')[0];
 
 let b = document.body;
 let newP = document.createElement('div');
+let src = chrome.runtime.getURL("logo.png");
 newP.innerHTML = `<div id="popup-overlay">
 <div class="popup-content">
     <h2>Ca te dirait de faire un geste pour la Planète ?</h2>
     <p>Prends quelques minutes pour chercher ton article en seconde Main !</p>
-    <a href=https://www.leboncoin.fr/recherche?text=${input} class="popup-link">Lien vers LeBonCoin</a>
-    <a href="javascript:void(0)"  class="popup-exit">Fermer</a>
+    <a href=https://www.leboncoin.fr/recherche?text=${input} id="popup-link">Lien vers LeBonCoin</a>
+    <a href="javascript:void(0)"  id="popup-exit">Fermer</a>
+    <img src=${src}>
 </div>
 </div>`;
 
@@ -34,12 +36,20 @@ stylePopup.innerHTML = `#popup-overlay {
 
 }
 
+img {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    bottom : 10px;
+    right: 10px;
+}
+
 .popup-content {
     max-width: 600px;
     width: 100%;
     padding: 30px;
     box-sizing: border-box;
-    background: rgb(143, 188, 143);
+    background: rgb(164,212,180);
     position: absolute;
     top : 50%;
     left : 50%;
@@ -51,21 +61,21 @@ stylePopup.innerHTML = `#popup-overlay {
     margin : 20px 0;
 }
 
-.popup-link {
+#popup-link {
     text-decoration: none;
-    color: black;
+    color: rgba(65,167,152,255);
     background: white;
     padding: 10px 20px;
     border-radius: 5px;
     display: inline-block;
 }
 
-.popup-exit {
+#popup-exit {
+    text-decoration: none;
     position: absolute;
     top : -5px;
     right: -5px;
-    text-decoration: none;
-    color: black;
+    color: rgba(65,167,152,255);
     background: white;
     padding: 5px 10px;
     border-radius: 5px;
@@ -81,6 +91,6 @@ popup.classList.toggle("open");
 
 }
 
-document.querySelector(".popup-exit").addEventListener("click", togglePopup);
+document.querySelector("#popup-exit").addEventListener("click", togglePopup);
 
 

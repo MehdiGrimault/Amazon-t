@@ -1,6 +1,6 @@
 {
 "manifest_version": 3,
-"name": "Second life",
+"name": "Amazon't",
 "version": "1.0",
 
 "description": "Favoriser les achats de seconde main",
@@ -14,23 +14,29 @@
 	"js": ["content.js"]
   } ],
 
-  "commands": {
-    "run-foo": {
-      "suggested_key": {
-        "default": "Ctrl+Shift+Y",
-        "mac": "Command+Shift+Y"
-      },
-      "description": "Run \"foo\" on the current page."
+  "web_accessible_resources": [{
+    "matches": ["<all_urls>"],
+    "resources": ["logo.png"]
+}],
+
+
+"commands": {
+  "run-foo": {
+    "suggested_key": {
+      "default": "Ctrl+Shift+Y",
+      "mac": "Command+Shift+Y"
     },
-    "_execute_action": {
-      "suggested_key": {
-        "windows": "Ctrl+Shift+Y",
-        "mac": "Command+Shift+Y",
-        "chromeos": "Ctrl+Shift+U",
-        "linux": "Ctrl+Shift+J"
-      }
-    }
+    "description": "Run \"foo\" on the current page."
   },
+  "_execute_action": {
+    "suggested_key": {
+      "windows": "Ctrl+Shift+Y",
+      "mac": "Command+Shift+Y",
+      "chromeos": "Ctrl+Shift+U",
+      "linux": "Ctrl+Shift+J"
+    }
+  }
+},
 
 "action":{
 	"default_popup": "main.html",
