@@ -16,4 +16,4 @@ function allowedUrl (url) {
         }
       }
     }
-    results[0].parentNode.parentNode.parentNode.style = "display: flex; align-items: start";
+    results[0].parentNode.parentNode.parentNode.style = "display: flex; align-items: center; justify-content: center";
