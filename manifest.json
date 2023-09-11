@@ -11,8 +11,12 @@
 
 "content_scripts": [ {
 	"matches": ["https://www.amazon.fr/s?k=*"],
-	"js": ["content.js"]
-  } ],
+	"js": ["popup.js"]
+  },
+  {
+    "matches": ["https://lens.google.com/*"],
+    "js": ["lens.js"]
+    }],
 
   "web_accessible_resources": [{
     "matches": ["<all_urls>"],
