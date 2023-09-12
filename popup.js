@@ -10,7 +10,7 @@ newP.innerHTML = `<div id="popup-overlay">
     <h2>Ça te dirait de faire un geste pour la Planète ?</h2>
     <p>Prends quelques minutes pour chercher ton article en seconde main !</p>
     <a href=https://www.leboncoin.fr/recherche?text=${input} id="popup-link">LeBonCoin</a>
-    <a href=https://www.backmarket.fr/search?q=${input} id="popup-link">Back Marcket</a>
+    <a href=https://www.backmarket.fr/search?q=${input} id="popup-link">Back Market</a>
     <a href=https://www.vinted.fr/catalog?search_text=${input} id="popup-link">Vinted</a>
     <a href="javascript:void(0)"  id="popup-exit">Fermer</a>
     <img src=${src}>
