@@ -1,17 +1,20 @@
-function allowedUrl (url) {
-    for (const element of secondHandUrl) {
-        if (url.startsWith(element)) {
-        return true;
-        }
-    }
-    return false;
-}
-
 
 let results = document.querySelectorAll("[data-action-url]");
-let secondHandUrl = ["https://www.leboncoin","https://www.backmarket","https://www.vinted","https://omaj","https://www.ebay"]
 
-let responses = [];
+setTimeout(() => {
+    
+    function allowedUrl (url) {
+        for (const element of secondHandUrl) {
+            if (url.startsWith(element)) {
+            return true;
+            }
+        }
+        return false;
+    }
+
+    let secondHandUrl = ["https://www.leboncoin","https://www.backmarket","https://www.vinted","https://omaj","https://www.ebay"]
+
+    let responses = [];
 
 
 for (const result of results) {
@@ -20,24 +23,30 @@ for (const result of results) {
         let link = result.firstElementChild.getAttribute("href");
         let title = result.firstElementChild.firstElementChild.getAttribute("data-item-title");
         let img = result.firstElementChild.firstElementChild.getAttribute("data-thumbnail-url");
-        let object = [img, title, link]; 
+        let name = result.firstElementChild.firstElementChild.lastElementChild.firstElementChild.lastElementChild.firstElementChild.innerText;
 
         let divArticle = document.createElement('div');
 
         let imgLink = document.createElement('a'); 
         let titleLink = document.createElement('a');
-        divArticle.prepend(titleLink,imgLink);
+        let pName = document.createElement('p');
+        divArticle.prepend(titleLink,imgLink, pName);
 
         imgLink.href = link;
         titleLink.href = link;
+        pName.innerText = name;
 
         let imgArticle = document.createElement('img');
         imgArticle.src = img;
         imgLink.prepend(imgArticle);
 
         let titleArticle = document.createElement('p');
-        titleArticle.src = img;
+        titleArticle.innerText = title;
         titleLink.prepend(titleArticle);
+
+
+        
+
 
 
         responses.push(divArticle.outerHTML);
@@ -81,8 +90,8 @@ stylePopup.innerHTML = `#popup-overlay {
 
 .popup-content {
     display: grid;
-    grid-template-columns: 200px minmax(0px, auto);
-    grid-auto-rows: minmax(100px, auto);
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
     width: 100%;
     height: 100%;
     padding: 30px;
@@ -93,15 +102,17 @@ stylePopup.innerHTML = `#popup-overlay {
     left : 50%;
     transform: translate(-50%, -50%);
     border-radius : 5px;
-    
+    overflow: scroll;
 }
 
 
-.popup-content a {
-    position: flex ;
+.popup-content div {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: auto;
+    position: flex;
+    justify-content : center;
     align-items: space-between;
-    max-width: 50px;
-    max-height: 50px;
 }
 
 
@@ -128,3 +139,4 @@ popup.classList.toggle("open");
 }
 
 document.querySelector("#popup-exit").addEventListener("click", togglePopup);
+}, 1000);
