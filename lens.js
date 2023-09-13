@@ -57,16 +57,19 @@ for (const result of results) {
 }
 console.log(responses);
 
+
 let b = document.body;
-//let src = chrome.runtime.getURL("logo.png");
+let src = chrome.runtime.getURL("logo.png");
 let newDiv = document.createElement('div');
 
 newDiv.innerHTML = `<div id="popup-overlay">
 <div class="popup-content">
-<div id="scroll">
+    <div id="header">
+      <img src=${src}>
+      <h1>Fais ton choix parmi ces articles de 2nde main !</h1>
+    </div>
     ${responses.join('')}
     <a href="javascript:void(0)"  id="popup-exit">Fermer</a>
-</div>
 </div>
 </div>`;
 
@@ -74,13 +77,15 @@ newDiv.innerHTML = `<div id="popup-overlay">
 if(responses.length>0){
   b.prepend(newDiv);
 }
-// Ajout du CSS
+//Ajout du CSS
 let stylePopup = document.createElement('style');
-stylePopup.innerHTML = `#popup-overlay {
+stylePopup.innerHTML = `
+
+#popup-overlay {
   position: fixed;
   top: 20%;
   right: 5%;
-  z-index: 40;
+  z-index: 98;
   display: none;
   height: 60%;
   width: 40%;
@@ -94,9 +99,10 @@ stylePopup.innerHTML = `#popup-overlay {
 /*première div qui contient les autres div d'articles*/
 .popup-content {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-auto-rows: auto;
     grid-row-gap:15px;
+    grid-column-gap:15px;
     width: 100%;
     height: 100%;
     padding: 30px;
@@ -107,68 +113,113 @@ stylePopup.innerHTML = `#popup-overlay {
     left : 50%;
     transform: translate(-50%, -50%);
     border-radius : 5px;
-    
+    overflow: scroll;
 }
 
 /*div pour chaque article*/
 .popup-content div {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: 100px 100px;
+  grid-auto-columns: 1fr 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   color:white;
   background-color:rgba(65,167,152,255);
   border-radius : 5px;
-  
+  height: 200px;
 }
 
-#scroll{
-overflow:scroll;
+.popup-content div .imgLink { 
+  grid-row-start: 1;
+  grid-row-end: 1;
+  grid-column-start: 1;
+  grid-column-end: 1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin: 10px;
 }
 
-.imgLink { 
-  grid-area: 1 / 1 / 3 / 2; 
+.popup-content div .imgLink img{
+  border-radius:5px;
+  position:relative;
+  margin:auto;
+  height:125%;
+}
+
+.popup-content div .pName { 
+  grid-row-start: 1;
+  grid-row-end: 1;
+  grid-column-start: 2;
+  grid-column-end: 2;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size: 30px;
+}
+
+.popup-content div .titleLink { 
+  grid-row-start: 2;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column: span 2;
+  color:white;
+  text-decoration:underline;
   display:flex;
   justify-content:center;
   align-items:center;
 }
 
-.imgLink img{
-  border-radius:5px;
-  position:relative;
-  margin:auto;
+.popup-content div .titleLink p { 
+  text-align: center;
 }
 
-.pName { 
-  grid-area: 1 / 2 / 2 / 3; 
-  display:flex;
-  justify-content:start;
-  align-items:end;
+
+#header {
+  grid-column: span 2;
+  height: 100px;
+  left: 5%;
+  top: 5%;
 }
 
-.titleLink { 
-  grid-area: 2 / 2 / 3 / 3; 
-  color:white;
-  text-decoration:underline;
-  display:flex;
-  justify-content:start;
-  align-items:start;
+#header {
+  background: rgb(164,212,180);
+  margin-bottom: 15px;
 }
+
+#header img {
+  position: relative;
+  height: 100%;
+}
+
+#header h1 {
+  position: absolute;
+  margin-left: 18%;
+  text-align: center;
+  color: black;
+  font-size: 25px;
+  margin-top: 5%;
+}
+
 
 #popup-exit {
     text-decoration: none;
     position: absolute;
-    top : -15px;
-    right: -25px;
+    top : 0px;
+    right: 0px;
     color: rgba(65,167,152,255);
     background: white;
     border:solid;
     border-color:rgba(65,167,152,255);
     padding: 5px 10px;
     border-radius: 5px;
+}
+
+#scroll{
+  overflow:scroll;
+  }
    
-}`;
+`;
 
 document.head.appendChild(stylePopup);
 
