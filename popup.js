@@ -8,11 +8,10 @@ let src = chrome.runtime.getURL("logo.png");
 newP.innerHTML = `<div id="popup-overlay">
 <div class="popup-content">
     <h2>Ça te dirait de faire un geste pour la Planète ?</h2>
-    <p>Prends quelques minutes pour chercher ton article en seconde main !</p>
+    <p>Clique sur Amazon't dans la barre des extentions pour apprendre à l'utiliser avec Google Lens ou retrouve ta recherche sur les sites suivants :</p>
     <a href=https://www.leboncoin.fr/recherche?text=${input} id="popup-link">LeBonCoin</a>
     <a href=https://www.backmarket.fr/search?q=${input} id="popup-link">Back Market</a>
     <a href=https://www.vinted.fr/catalog?search_text=${input} id="popup-link">Vinted</a>
-    <p>Clique sur Amazon't dans la barre des extentions pour apprendre à l'utiliser avec Google Lens</p>
     <a href="javascript:void(0)"  id="popup-exit">Fermer</a>
     <img src=${src}>
 </div>
@@ -40,8 +39,8 @@ stylePopup.innerHTML = `#popup-overlay {
 }
 
 img {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     position: absolute;
     bottom : 10px;
     right: 10px;
@@ -59,6 +58,7 @@ img {
     transform: translate(-50%, -50%);
     border-radius : 5px;
     
+    
 }
 
 .popup-content p {
@@ -73,6 +73,12 @@ img {
     padding: 10px 20px;
     border-radius: 5px;
     display: inline-block;
+    border:solid;
+    border-color:rgba(65,167,152,255);
+}
+
+#popup-link:hover{
+    text-decoration:underline;
 }
 
 #popup-exit {
@@ -82,6 +88,8 @@ img {
     right: -25px;
     color: rgba(65,167,152,255);
     background: white;
+    border:solid;
+    border-color:rgba(65,167,152,255);
     padding: 5px 10px;
     border-radius: 5px;
 }`;
