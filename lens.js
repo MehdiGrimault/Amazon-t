@@ -1,8 +1,8 @@
 
-let results = document.querySelectorAll("[data-action-url]");
+
 
 setTimeout(() => {
-    
+    let results = document.querySelectorAll("[data-action-url]");
     function allowedUrl (url) {
         for (const element of secondHandUrl) {
             if (url.startsWith(element)) {
@@ -12,7 +12,7 @@ setTimeout(() => {
         return false;
     }
 
-    let secondHandUrl = ["https://www.leboncoin","https://www.backmarket","https://www.vinted","https://omaj","https://www.ebay"]
+    let secondHandUrl = ["https://www.leboncoin","https://www.backmarket","https://www.vinted","https://omaj","https://www.ebay","https://gensdeconfiance","https://www.troc","https://ladycocotte","https://www.happycash","https://le-ricochet","https://www.onceagain", "https://www.easycash","https://biicou","https://www.label-emmaus","https://fr.vestiairecollective","https://www.depop","https://www.recyclivre","https://shop.labourseauxlivres","https://www.livrensemble"]
 
     let responses = [];
 
@@ -60,23 +60,27 @@ console.log(responses);
 let b = document.body;
 //let src = chrome.runtime.getURL("logo.png");
 let newDiv = document.createElement('div');
+
 newDiv.innerHTML = `<div id="popup-overlay">
 <div class="popup-content">
+<div id="scroll">
     ${responses.join('')}
     <a href="javascript:void(0)"  id="popup-exit">Fermer</a>
+</div>
 </div>
 </div>`;
 
 //Ajoute le paragraphe créé comme premier enfant de l'élément body
-b.prepend(newDiv);
-
+if(responses.length>0){
+  b.prepend(newDiv);
+}
 // Ajout du CSS
 let stylePopup = document.createElement('style');
 stylePopup.innerHTML = `#popup-overlay {
   position: fixed;
   top: 20%;
   right: 5%;
-  z-index: 98;
+  z-index: 40;
   display: none;
   height: 60%;
   width: 40%;
@@ -103,7 +107,7 @@ stylePopup.innerHTML = `#popup-overlay {
     left : 50%;
     transform: translate(-50%, -50%);
     border-radius : 5px;
-    overflow: scroll;
+    
 }
 
 /*div pour chaque article*/
@@ -117,6 +121,10 @@ stylePopup.innerHTML = `#popup-overlay {
   background-color:rgba(65,167,152,255);
   border-radius : 5px;
   
+}
+
+#scroll{
+overflow:scroll;
 }
 
 .imgLink { 
@@ -155,8 +163,11 @@ stylePopup.innerHTML = `#popup-overlay {
     right: -25px;
     color: rgba(65,167,152,255);
     background: white;
+    border:solid;
+    border-color:rgba(65,167,152,255);
     padding: 5px 10px;
     border-radius: 5px;
+   
 }`;
 
 document.head.appendChild(stylePopup);

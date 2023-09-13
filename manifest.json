@@ -3,7 +3,7 @@
 "name": "Amazon't",
 "version": "1.0",
 
-"description": "Favoriser les achats de seconde main",
+"description": "Favorise les achats de seconde main. Avec Google Lens, Amazon't sélectionne les résultats d'articles d'occasion.",
 
 "background": {
 	"service_worker":"background.js"
