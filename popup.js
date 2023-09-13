@@ -12,6 +12,7 @@ newP.innerHTML = `<div id="popup-overlay">
     <a href=https://www.leboncoin.fr/recherche?text=${input} id="popup-link">LeBonCoin</a>
     <a href=https://www.backmarket.fr/search?q=${input} id="popup-link">Back Market</a>
     <a href=https://www.vinted.fr/catalog?search_text=${input} id="popup-link">Vinted</a>
+    <p>Clique sur Amazon't dans la barre des extentions pour apprendre à l'utiliser avec Google Lens</p>
     <a href="javascript:void(0)"  id="popup-exit">Fermer</a>
     <img src=${src}>
 </div>
@@ -62,6 +63,7 @@ img {
 
 .popup-content p {
     margin : 20px 0;
+    margin-right :30px
 }
 
 #popup-link {

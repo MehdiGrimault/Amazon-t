@@ -27,10 +27,13 @@ for (const result of results) {
 
         let divArticle = document.createElement('div');
 
-        let imgLink = document.createElement('a'); 
+        let imgLink = document.createElement('a');
+        imgLink.className="imgLink" ;
         let titleLink = document.createElement('a');
+        titleLink.className="titleLink";
         let pName = document.createElement('p');
-        divArticle.prepend(titleLink,imgLink, pName);
+        pName.className="pName";
+        divArticle.prepend(imgLink,pName,titleLink);
 
         imgLink.href = link;
         titleLink.href = link;
@@ -55,7 +58,7 @@ for (const result of results) {
 console.log(responses);
 
 let b = document.body;
-let src = chrome.runtime.getURL("logo.png");
+//let src = chrome.runtime.getURL("logo.png");
 let newDiv = document.createElement('div');
 newDiv.innerHTML = `<div id="popup-overlay">
 <div class="popup-content">
@@ -70,16 +73,13 @@ b.prepend(newDiv);
 // Ajout du CSS
 let stylePopup = document.createElement('style');
 stylePopup.innerHTML = `#popup-overlay {
-    position : fixed;
-    top : 100px;
-    left : 100px;
-    right :0;
-    bottom : 0;
-    background : rgba(0, 0, 0, 0.7);
-    z-index: 98;
-    display: none;
-    height: 500px;
-    width: 1000px;
+  position: fixed;
+  top: 20%;
+  right: 5%;
+  z-index: 98;
+  display: none;
+  height: 60%;
+  width: 40%;
 }
 
 #popup-overlay.open {
@@ -87,11 +87,12 @@ stylePopup.innerHTML = `#popup-overlay {
 
 }
 
-
+/*première div qui contient les autres div d'articles*/
 .popup-content {
     display: grid;
     grid-template-columns: 1fr;
     grid-auto-rows: auto;
+    grid-row-gap:15px;
     width: 100%;
     height: 100%;
     padding: 30px;
@@ -105,17 +106,47 @@ stylePopup.innerHTML = `#popup-overlay {
     overflow: scroll;
 }
 
-
+/*div pour chaque article*/
 .popup-content div {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-auto-rows: auto;
-    position: flex;
-    justify-content : center;
-    align-items: space-between;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  color:white;
+  background-color:rgba(65,167,152,255);
+  border-radius : 5px;
+  
 }
 
+.imgLink { 
+  grid-area: 1 / 1 / 3 / 2; 
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
 
+.imgLink img{
+  border-radius:5px;
+  position:relative;
+  margin:auto;
+}
+
+.pName { 
+  grid-area: 1 / 2 / 2 / 3; 
+  display:flex;
+  justify-content:start;
+  align-items:end;
+}
+
+.titleLink { 
+  grid-area: 2 / 2 / 3 / 3; 
+  color:white;
+  text-decoration:underline;
+  display:flex;
+  justify-content:start;
+  align-items:start;
+}
 
 #popup-exit {
     text-decoration: none;
