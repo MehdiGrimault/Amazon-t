@@ -197,8 +197,8 @@ stylePopup.innerHTML = `
   margin-left: 18%;
   text-align: center;
   color: black;
-  font-size: 25px;
-  margin-top: 5%;
+  font-size: 20px;
+  margin-top: 7%;
 }
 
 
@@ -232,4 +232,4 @@ popup.classList.toggle("open");
 }
 
 document.querySelector("#popup-exit").addEventListener("click", togglePopup);
-}, 1000);
+}, 2000);
